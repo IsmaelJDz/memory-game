@@ -1,0 +1,46 @@
+.flip {
+  width: 240px;
+  height: 200px;
+  margin: 10px;
+  float: left;
+}
+
+.flip > .back {
+  position: absolute;
+  -webkit-transform: perspective(600px) rotateY(0deg);
+  transform: perspective(600px) rotateY(0deg);
+  /* background-image: url(); */
+  /* background: #fc0; */
+  width: 240px;
+  height: 200px;
+  border-radius: 7px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: -webkit-transform 0.5s linear 0s;
+  transition: transform 0.5s linear 0s;
+}
+
+.flip > .front {
+  position: absolute;
+  -webkit-transform: perspective(600px) rotateY(180deg);
+  transform: perspective(600px) rotateY(180deg);
+  /* background-image: url(); */
+  /* background: #fc0; */
+  width: 240px;
+  height: 200px;
+  border-radius: 7px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: -webkit-transform 0.5s linear 0s;
+  transition: transform 0.5s linear 0s;
+}
+
+.flip:hover > .front {
+  -webkit-transform: perspective(600px) rotateY(0deg);
+  transform: perspective(600px) rotateY(0deg);
+}
+
+.flip:hover > .back {
+  -webkit-transform: perspective(600px) rotateY(-180deg);
+  transform: perspective(600px) rotateY(-180deg);
+}
