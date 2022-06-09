@@ -2,7 +2,7 @@
 
 ![Captura de la app](public/app/memory_game.png)
 
-[See the aplication](https://memory.vercel.app/) 👀
+[See the aplication](https://memory-game-ten-kappa.vercel.app/) 👀
 
 ## Welcome! 👋
 
