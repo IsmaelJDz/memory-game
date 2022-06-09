@@ -1,52 +1,72 @@
 import { FC, useReducer } from "react";
-import { UIContext } from "./";
-import { uiReducer } from "./MainReducer";
+import { MainContext } from "./";
+import { mainReducer } from "./MainReducer";
 
-export interface UIState {
-  sideMenuOpen: boolean;
-  isAddingEntry: boolean;
-  isDragging: boolean;
+import { CardDetail } from "@/interfaces/index";
+
+export interface MainState {
+  cards: CardDetail[];
+  playerTurn: string;
+  playerOnePoints: number;
+  playerOneName: string;
+  playerTwoName: string;
+  playerSecondPoints: number;
 }
 
-interface UIProviderProps {
+interface MainProviderProps {
   children: React.ReactNode | React.ReactNode[];
 }
 
-const UI_INITIAL_STATE: UIState = {
-  sideMenuOpen: false,
-  isAddingEntry: false,
-  isDragging: false,
+const UI_INITIAL_STATE: MainState = {
+  cards: [],
+  playerTurn: "Player One",
+  playerOnePoints: 0,
+  playerSecondPoints: 0,
+  playerOneName: "",
+  playerTwoName: "",
 };
 
-export const UIProvider: FC<UIProviderProps> = ({ children }) => {
-  const [state, dispatch] = useReducer(uiReducer, UI_INITIAL_STATE);
+export const MainProvider: FC<MainProviderProps> = ({ children }) => {
+  const [state, dispatch] = useReducer(mainReducer, UI_INITIAL_STATE);
 
-  const openSideMenu = () => {
-    dispatch({ type: "UI - Open Sidebar" });
+  const setCardsData = (cards: CardDetail[]) => {
+    dispatch({ type: "Data - Set Cards", payload: cards });
   };
 
-  const closeSideMenu = () => dispatch({ type: "UI - Close Sidebar" });
+  const setPlayerPoint = (player: string, point: number) => {
+    if (player === "Player One" || player === state.playerOneName) {
+      dispatch({ type: "Turn - Set PlayerOne Point", payload: point });
+    }
 
-  const setIsAddingEntry = (isAdding: boolean) =>
-    dispatch({ type: "UI - Set isAddingEntry", payload: isAdding });
+    if (player === "Player Two" || player === state.playerTwoName) {
+      dispatch({ type: "Turn - Set PlayerSecond Point", payload: point });
+    }
+  };
 
-  const startDragging = () => dispatch({ type: "UI - Start Dragging" });
+  const setPlayerTurn = (playerTurn: string) => {
+    dispatch({ type: "Turn - Set PlayerTurn", payload: playerTurn });
+  };
 
-  const endDragging = () => dispatch({ type: "UI - End Dragging" });
+  const setPlayerOneName = (playerOneName: string) => {
+    dispatch({ type: "Turn - Set PlayerOneName Turn", payload: playerOneName });
+  };
+
+  const setPlayerTwoName = (playerTwoName: string) => {
+    dispatch({ type: "Turn - Set PlayerTwoName Turn", payload: playerTwoName });
+  };
 
   return (
-    //<UIContext.Provider value={{ sideMenuOpen: state.sideMenuOpen }}>
-    <UIContext.Provider
+    <MainContext.Provider
       value={{
         ...state,
-        openSideMenu,
-        closeSideMenu,
-        setIsAddingEntry,
-        startDragging,
-        endDragging,
+        setCardsData,
+        setPlayerPoint,
+        setPlayerTurn,
+        setPlayerOneName,
+        setPlayerTwoName,
       }}
     >
       {children}
-    </UIContext.Provider>
+    </MainContext.Provider>
   );
 };

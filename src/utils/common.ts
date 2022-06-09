@@ -4,7 +4,7 @@
  * @returns array
  */
 
-const getData = async (api) => {
+const getData = async (api: string) => {
   const res = await fetch(`${api}`);
   const dataToJSON = await res.json();
   return dataToJSON;

@@ -9,15 +9,17 @@ interface Props {
 
 export const Layout = ({ title = "Memory Game", children }: Props) => {
   return (
-    <div>
+    <>
       <Head>
+        <meta name="author" content="Ismael R" charSet="utf-8" />
+        <meta name="description" content={`${title}`} />
         <title> {title} </title>
       </Head>
 
       <Navbar />
 
-      <div>{children}</div>
+      <main>{children}</main>
       {/* <Footer /> */}
-    </div>
+    </>
   );
 };

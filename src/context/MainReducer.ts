@@ -1,41 +1,53 @@
-import { UIState } from "./";
+import { MainState } from "./";
+import { CardDetail } from "@/interfaces/index";
 
-type UIActionType =
-  | { type: "UI - Open Sidebar" }
-  | { type: "UI - Close Sidebar" }
-  | { type: "UI - Set isAddingEntry"; payload: boolean }
-  | { type: "UI - Start Dragging" }
-  | { type: "UI - End Dragging" };
+type MainActionType =
+  | { type: "Data - Set Cards"; payload: CardDetail[] }
+  | { type: "Turn - Set PlayerOne Point"; payload: number }
+  | { type: "Turn - Set PlayerSecond Point"; payload: number }
+  | { type: "Turn - Set PlayerTurn"; payload: string }
+  | { type: "Turn - Set PlayerOneName Turn"; payload: string }
+  | { type: "Turn - Set PlayerTwoName Turn"; payload: string };
 
-export const uiReducer = (state: UIState, action: UIActionType): UIState => {
+export const mainReducer = (
+  state: MainState,
+  action: MainActionType
+): MainState => {
   switch (action.type) {
-    case "UI - Open Sidebar":
+    case "Data - Set Cards":
       return {
         ...state,
-        sideMenuOpen: true,
-      };
-    case "UI - Close Sidebar":
-      return {
-        ...state,
-        sideMenuOpen: false,
+        cards: [...action.payload],
       };
 
-    case "UI - Set isAddingEntry":
+    case "Turn - Set PlayerTurn":
       return {
         ...state,
-        isAddingEntry: action.payload,
+        playerTurn: action.payload,
       };
 
-    case "UI - Start Dragging":
+    case "Turn - Set PlayerOne Point":
       return {
         ...state,
-        isDragging: true,
+        playerOnePoints: action.payload,
       };
 
-    case "UI - End Dragging":
+    case "Turn - Set PlayerSecond Point":
       return {
         ...state,
-        isDragging: false,
+        playerSecondPoints: action.payload,
+      };
+
+    case "Turn - Set PlayerOneName Turn":
+      return {
+        ...state,
+        playerOneName: action.payload,
+      };
+
+    case "Turn - Set PlayerTwoName Turn":
+      return {
+        ...state,
+        playerTwoName: action.payload,
       };
 
     default:

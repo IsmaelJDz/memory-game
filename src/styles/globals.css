@@ -14,3 +14,20 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.btn {
+  background-color: #4299e1;
+  border-radius: 0.25rem;
+  font-weight: bold;
+  color: #fff;
+  padding-inline-start: 25px;
+  padding-inline-end: 25px;
+  padding-block-start: 16px;
+  padding-block-end: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #2b6cb0;
+}

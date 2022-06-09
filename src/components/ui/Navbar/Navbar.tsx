@@ -1,12 +1,9 @@
-import { useContext } from "react";
-import { UIContext } from "../../../context";
+import styles from "./Navbar.module.css";
 
 export const Navbar = () => {
-  const { openSideMenu } = useContext(UIContext);
-
   return (
-    <div>
-      <h1>Navbar</h1>
+    <div className={styles.nav}>
+      <h1>🎰 Memory Game 🎰</h1>
     </div>
   );
 };

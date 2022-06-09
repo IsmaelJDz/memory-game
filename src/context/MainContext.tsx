@@ -1,14 +1,18 @@
 import { createContext } from "react";
+import { CardDetail } from "@/interfaces/index";
 
 interface ContextProps {
-  sideMenuOpen: boolean;
-  isAddingEntry: boolean;
-  isDragging: boolean;
-  openSideMenu: () => void;
-  closeSideMenu: () => void;
-  setIsAddingEntry: (isAdding: boolean) => void;
-  startDragging: () => void;
-  endDragging: () => void;
+  cards: CardDetail[];
+  playerTurn: string;
+  playerOnePoints: number;
+  playerSecondPoints: number;
+  playerOneName?: string;
+  playerTwoName?: string;
+  setCardsData: (cards: CardDetail[]) => void;
+  setPlayerPoint: (player: string, point: number) => void;
+  setPlayerTurn: (playerTurn: string) => void;
+  setPlayerOneName: (playerOneName: string) => void;
+  setPlayerTwoName: (playerTwoName: string) => void;
 }
 
-export const UIContext = createContext({} as ContextProps);
+export const MainContext = createContext({} as ContextProps);

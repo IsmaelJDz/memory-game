@@ -1,8 +1,8 @@
-# Frontend Memory Game 🛍
+# Frontend Memory Game 🎮
 
-![Captura de la app](public/img/Home.png)
+![Captura de la app](public/app/memory_game.png)
 
-[See the aplication](https://meru-ecommerce.vercel.app/) 👀
+[See the aplication](https://memory.vercel.app/) 👀
 
 ## Welcome! 👋
 
@@ -12,9 +12,8 @@
 - CSS3
 - JavaScript,
 - React,
-- Next,
-- Redux
-- Tailwind
+- Context,
+- NEXT
 
 ## Pre-requirements 📋
 

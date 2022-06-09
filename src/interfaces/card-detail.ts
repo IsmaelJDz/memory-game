@@ -3,4 +3,6 @@ export interface CardDetail {
   name: string;
   description: string;
   image: string;
+  showCard: boolean;
+  relationId: null | number;
 }

@@ -1,10 +1,12 @@
-import { NextPage, GetStaticProps } from "next";
+import { useContext, useLayoutEffect } from "react";
+import { GetStaticProps } from "next";
 import { Board } from "@/components/ui/Board";
 
 import getData from "@/utils/common";
 import { initialData } from "@/data/data";
 
 import { CardDetail } from "@/interfaces/index";
+import { MainContext } from "@/context/index";
 
 /**
  *
@@ -17,7 +19,13 @@ interface Props {
 }
 
 export default function Home({ cards }: Props) {
-  return <Board cards={cards} />;
+  const { setCardsData } = useContext(MainContext);
+
+  useLayoutEffect(() => {
+    setCardsData(cards);
+  }, []);
+
+  return <Board />;
 }
 
 export const getStaticProps: GetStaticProps = async () => {

@@ -1,0 +1,32 @@
+.points {
+  font-size: 4rem;
+  margin: 0 10px;
+}
+
+.players {
+  display: flex;
+}
+
+.playerOne {
+  flex: 1;
+  margin-right: 5px;
+  width: 45%;
+  height: 200px;
+  font-size: 1.5em;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.playerSecond {
+  flex: 1;
+  margin-left: 5px;
+  width: 45%;
+  height: 200px;
+  font-size: 1.5em;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
