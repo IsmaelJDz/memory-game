@@ -102,7 +102,13 @@ export const Board: NextPage = () => {
       (allCardsMatched.length === 0 && playerOnePoints > 0) ||
       (allCardsMatched.length === 0 && playerSecondPoints > 0)
     ) {
-      setWinner(playerTurn);
+      if (playerOnePoints > playerSecondPoints) {
+        setWinner(playerOneName || "Player One");
+      }
+
+      if (playerSecondPoints > playerOnePoints) {
+        setWinner(playerTwoName || "Player Two");
+      }
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

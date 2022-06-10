@@ -29,6 +29,8 @@ export default function Home({ cards }: Props) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  /*  if data comes from some api */
+
   // const data = await getData(
   //   "https://products-api-meru.vercel.app/api/products"
   // ).catch((err) => {
